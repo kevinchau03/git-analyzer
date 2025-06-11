@@ -1,5 +1,6 @@
 from datetime import datetime
 from git import Repo
+from rich import print
 import os
 
 def repo_summary(repo):
@@ -51,5 +52,3 @@ def export_commits_today_md(repo, output_path=".", author=None):
 
     with open(filepath, "w", encoding="utf-8") as f:
         f.write("\n".join(lines))
-
-    print(f":memo: [green]Dev log written to:[/green] {filepath}")
