@@ -1,13 +1,7 @@
 import argparse
-from git import Repo
-from rich import print
-from rich.panel import Panel
-from rich.console import Console
-from rich.table import Table
-from datetime import datetime, timedelta
-import os
 from analyzer.commands.dashboard import handle_dashboard
 from analyzer.commands.summary import handle_summary
+from analyzer.commands.log import handle_log
 
 def main():
     parser = argparse.ArgumentParser(
@@ -23,6 +17,11 @@ def main():
     # Dashboard command
     dash = subparsers.add_parser("dashboard", help="Overview screen")
     dash.set_defaults(func=handle_dashboard)
+
+    log_parser = subparsers.add_parser("log", help="Export today's commits to a markdown devlog")
+    log_parser.add_argument("--path", default=".", help="Path to Git repository")
+    log_parser.add_argument("--author", help="Filter by author name")
+    log_parser.set_defaults(func=handle_log)
 
     args = parser.parse_args()
 

@@ -13,13 +13,11 @@ def handle_dashboard(args):
     table.add_column("Command", style="cyan", no_wrap=True)
     table.add_column("Description", style="white")
 
-    table.add_row("summary", "Show total commits, authors, recent messages")
-    table.add_row("author", "Filter commits by author name")
-    table.add_row("today", "Show commits made today")
-    table.add_row("average", "Calculate average commits per day")
     table.add_row("dashboard", "Show this overview screen")
+    table.add_row("summary", "Show total commits, authors, recent messages")
+    table.add_row("log", "Export today's commits to a markdown devlog")
 
     console.print(table)
 
     # Footer
-    console.print("\n✨ [italic]Tip:[/italic] Use [bold]--path[/bold] to analyze other repositories.\n")
+    console.print("\n✨ [bold]Created By:[/bold] Kevin Chau, kevchau03 (github)\n")
