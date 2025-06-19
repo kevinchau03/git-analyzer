@@ -14,6 +14,7 @@ def handle_dashboard(args):
     table.add_row("dashboard", "Show this overview screen")
     table.add_row("summary", "Show total commits, authors, recent messages")
     table.add_row("log", "Export today's commits to a markdown devlog")
+    table.add_row("hot", "Show the most-modified files in the repo")
 
     console.print(table)
 

@@ -54,3 +54,15 @@ def export_commits_today_md(repo, output_path=".", author=None):
 
     with open(filepath, "w", encoding="utf-8") as f:
         f.write("\n".join(lines))
+
+def get_most_modified_files(repo, top_n=10):
+    """Returns the top N most modified files in the repository."""
+    file_changes = {}
+
+    for commit in repo.iter_commits():
+        for diff in commit.diff(commit.parents or None):
+            if diff.a_path:
+                file_changes[diff.a_path] = file_changes.get(diff.a_path, 0) + 1
+
+    sorted_files = sorted(file_changes.items(), key=lambda x: x[1], reverse=True)
+    return sorted_files[:top_n]
