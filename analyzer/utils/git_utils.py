@@ -6,9 +6,11 @@ import os
 def repo_summary(repo):
     commits = list(repo.iter_commits())
     return {
+        "repo_name": os.path.basename(repo.working_tree_dir),
         "total_commits": len(commits),
         "authors": {c.author.name for c in commits},
-        "commit_messages": [c.summary.strip() for c in commits]
+        "commit_messages": [c.summary.strip() for c in commits],
+        "active_branches": [b.name for b in repo.branches],
     }
 
 def get_commits_today(repo):
